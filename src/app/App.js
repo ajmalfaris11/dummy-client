@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
-import ListUserPage from './components/ListUserPage';
+import ListUsersPage from './components/ListUsersPage';
 import AddUserPage from './components/AddUserPage';
 import EditUserPage from './components/EditUserPage';
 import ViewUserPage from './components/ViewUserPage';
@@ -24,7 +24,7 @@ export default function App() {
     </Navbar>
     <Container className='pt-5'>
       <Routes>
-        <Route index element={<ListUserPage/>}  />
+        <Route index element={<ListUsersPage/>}  />
         <Route path="add" element={<AddUserPage/>}  />
         <Route path="user/edit" element={<EditUserPage />}  />
         <Route path="users" element={<ViewUserPage/>}  />
