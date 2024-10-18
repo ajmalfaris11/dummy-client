@@ -27,7 +27,7 @@ export default function App() {
         <Route index element={<ListUsersPage/>}  />
         <Route path="add" element={<AddUserPage/>}  />
         <Route path="user/edit" element={<EditUserPage />}  />
-        <Route path="users" element={<ViewUserPage/>}  />
+        <Route path="users/:userId" element={<ViewUserPage/>}  />
       </Routes>
     </Container>
   </div>
