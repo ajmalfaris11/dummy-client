@@ -15,7 +15,8 @@ export default function AddUserPage() {
             <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type="text"
+                type="name"
+                required
                 placeholder="Enter name"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
@@ -26,6 +27,7 @@ export default function AddUserPage() {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
+                required
                 placeholder="name@example.com"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
@@ -35,7 +37,8 @@ export default function AddUserPage() {
             <Form.Group className="mb-3">
               <Form.Label>Age</Form.Label>
               <Form.Control
-                type="numbe"
+                type="number"
+                required
                 placeholder="Age"
                 value={age}
                 onChange={(event) => setAge(event.target.value)}
