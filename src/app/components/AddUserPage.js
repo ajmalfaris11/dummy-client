@@ -1,17 +1,35 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
 
 export default function AddUserPage() {
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [premiumMember, setPremiumMember] = useState(false);
 
+  const submitUser = async (event) => {
+    event.preventDefault();
+    
+     await axios.post(
+      "http://localhost:8000/users",
+      {
+        name: name,
+        email: email,
+        age: parseInt(age),
+        premiumMember: premiumMember
+
+      }
+    );
+
+  }
+
   return (
     <div className="row justify-content-center">
       <div className="col-md-4">
         <Card className="p-4">
-          <Form>
+          <Form onSubmit={submitUser}>
             <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
               <Form.Control
