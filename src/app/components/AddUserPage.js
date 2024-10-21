@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom'; // this hook using for navigate the page
 
 export default function AddUserPage() {
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,7 +14,7 @@ export default function AddUserPage() {
   const submitUser = async (event) => {
     event.preventDefault();
     
-     await axios.post(
+    const response = await axios.post(
       "http://localhost:8000/users",
       {
         name: name,
@@ -22,6 +24,8 @@ export default function AddUserPage() {
 
       }
     );
+    const id  = response.data.id;
+    navigate(`/users/${id}`); // navigate to the user page
 
   }
 
