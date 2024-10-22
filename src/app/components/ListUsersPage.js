@@ -36,7 +36,7 @@ export default function ListUserPage() {
                   <Button variant="primary" size="sm">View</Button>
                 </Link>
                 {" "}
-                <Link to={`/users/edit/${user.id}`}>
+                <Link to={`/users/${user.id}/edit`}>
                   <Button variant="info" size="sm">Edit</Button>
                 </Link>
                 {" "}
