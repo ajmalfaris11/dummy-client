@@ -6,15 +6,26 @@ import axios from 'axios';
 export default function ListUserPage() {
   const [data, setData] = useState([]);
 
+  // Fetch users function
+  const fetchUsers = async () => {
+    const response = await axios.get("http://localhost:8000/users");
+    setData(response.data);
+  };
+  
   // Fetch users when the component mounts
   useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await axios.get("http://localhost:8000/users");
-      setData(response.data);
-    };
-
     fetchUsers();
-  }, []); // Empty dependency array means this runs once when the component mounts
+  }, []); 
+  
+  const deleteUser = (user) => {
+    axios.delete(`http://localhost:8000/users/${user.id}`).then(() => {
+
+      alert(user.name + "'s data deleted");
+      fetchUsers(); // Call fetchUsers after deletion to refresh the list
+
+    });
+  };
+  
 
   return (
     <Table striped bordered hover>
@@ -40,7 +51,7 @@ export default function ListUserPage() {
                   <Button variant="info" size="sm">Edit</Button>
                 </Link>
                 {" "}
-                <Button variant="danger" size="sm">Delete</Button>
+                <Button variant="danger" size="sm" onClick={()=>deleteUser(user)}>Delete</Button>
               </td>
             </tr>
           ))
